@@ -1,995 +1,1772 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Algoritmos e Representações - Lógica de Programação I</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'pastel-blue': '#E6F3FF',
-                        'pastel-purple': '#F0E6FF',
-                        'pastel-pink': '#FFE6F0',
-                        'pastel-green': '#E6FFE6',
-                        'pastel-yellow': '#FFF9E6',
-                        'pastel-orange': '#FFE6D9',
-                        'soft-blue': '#B8D4F0',
-                        'soft-purple': '#D4B8F0',
-                        'soft-pink': '#F0B8D4',
-                        'soft-green': '#B8F0B8',
-                        'soft-yellow': '#F0F0B8',
-                        'soft-orange': '#F0D4B8'
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "pastel-blue": "#E6F3FF",
+              "pastel-purple": "#F0E6FF",
+              "pastel-pink": "#FFE6F0",
+              "pastel-green": "#E6FFE6",
+              "pastel-yellow": "#FFF9E6",
+              "pastel-orange": "#FFE6D9",
+              "soft-blue": "#B8D4F0",
+              "soft-purple": "#D4B8F0",
+              "soft-pink": "#F0B8D4",
+              "soft-green": "#B8F0B8",
+              "soft-yellow": "#F0F0B8",
+              "soft-orange": "#F0D4B8",
+            },
+          },
+        },
+      };
     </script>
-   <link rel="stylesheet" href="style.css">
-</head>
-<body class="bg-gradient-to-br from-pastel-blue via-pastel-purple to-pastel-pink min-h-screen">
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body
+    class="bg-gradient-to-br from-pastel-blue via-pastel-purple to-pastel-pink min-h-screen"
+  >
     <!-- Progress Bar -->
     <div class="fixed top-0 left-0 w-full h-1 bg-white/30 z-50">
-        <div id="progress-bar" class="h-full bg-gradient-to-r from-soft-blue to-soft-purple transition-all duration-300" style="width: 8.33%"></div>
+      <div
+        id="progress-bar"
+        class="h-full bg-gradient-to-r from-soft-blue to-soft-purple transition-all duration-300"
+        style="width: 7.69%"
+      ></div>
     </div>
 
     <!-- Slide Counter -->
-    <div class="fixed top-6 right-6 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-gray-700 z-40">
-        <span id="current-slide">1</span> / <span id="total-slides">12</span>
+    <div
+      class="fixed top-6 right-6 bg-white/80 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium text-gray-700 z-40"
+    >
+      <span id="current-slide">1</span> / <span id="total-slides">13</span>
     </div>
 
     <!-- Main Container -->
     <div class="min-h-screen flex items-center justify-center p-4">
-        <!-- Slide 1: Título -->
-        <div class="slide active max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition">
-            <div class="text-center space-y-8">
-                <div class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700">
-                    Slide 1 de 12
-                </div>
-                
-                <div class="space-y-4">
-                    <div class="text-6xl mb-6">🎯</div>
-                    <h1 class="text-5xl font-bold gradient-text mb-4">Algoritmos e Representações</h1>
-                    <p class="text-xl text-gray-600 font-medium">Lógica de Programação I</p>
-                    <p class="text-lg text-gray-500">Curso Técnico em Informática - 1° Ano</p>
-                </div>
+      <!-- Slide 1: Título -->
+      <div
+        class="slide active max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition"
+      >
+        <div class="text-center space-y-8">
+          <div
+            class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700"
+          >
+            Slide 1 de 13
+          </div>
 
-                <div class="flex justify-center space-x-8 text-4xl mt-12">
-                    <div class="animate-bounce" style="animation-delay: 0s;">💻</div>
-                    <div class="animate-bounce" style="animation-delay: 0.2s;">📊</div>
-                    <div class="animate-bounce" style="animation-delay: 0.4s;">🔄</div>
-                </div>
+          <div class="space-y-4">
+            <div class="text-6xl mb-6">🎯</div>
+            <h1 class="text-5xl font-bold gradient-text mb-4">
+              Algoritmos e Representações
+            </h1>
+            <p class="text-xl text-gray-600 font-medium">
+              Lógica de Programação I
+            </p>
+            <p class="text-lg text-gray-500">
+              Curso Técnico em Informática - 1° Ano
+            </p>
+          </div>
 
-                <div class="bg-pastel-green/50 rounded-2xl p-8 mt-12">
-                    <h2 class="text-2xl font-semibold text-gray-800 mb-4">Bem-vindos ao mundo dos algoritmos!</h2>
-                    <p class="text-lg text-gray-600">Hoje vamos aprender como resolver problemas de forma organizada e lógica</p>
-                </div>
-            </div>
+          <div class="flex justify-center space-x-8 text-4xl mt-12">
+            <div class="animate-bounce" style="animation-delay: 0s">💻</div>
+            <div class="animate-bounce" style="animation-delay: 0.2s">📊</div>
+            <div class="animate-bounce" style="animation-delay: 0.4s">🔄</div>
+          </div>
+
+          <div class="bg-pastel-green/50 rounded-2xl p-8 mt-12">
+            <h2 class="text-2xl font-semibold text-gray-800 mb-4">
+              Bem-vindos ao mundo dos algoritmos!
+            </h2>
+            <p class="text-lg text-gray-600">
+              Hoje vamos aprender como resolver problemas de forma organizada e
+              lógica
+            </p>
+          </div>
         </div>
+      </div>
 
-        <!-- Slide 2: O que é um Algoritmo? -->
-        <div class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden">
-            <div class="space-y-8">
-                <div class="text-center">
-                    <div class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6">
-                        Slide 2 de 12
-                    </div>
-                    <h2 class="text-4xl font-bold gradient-text flex items-center justify-center gap-4">
-                        🤔 O que é um Algoritmo?
-                    </h2>
-                </div>
-
-                <div class="bg-gradient-to-r from-pastel-pink to-pastel-orange rounded-2xl p-8 text-center">
-                    <p class="text-xl font-medium text-gray-800 leading-relaxed">
-                        Um algoritmo é uma <span class="font-bold text-purple-700">sequência finita de passos</span> organizados e bem definidos para resolver um problema ou executar uma tarefa
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-pastel-yellow/70 rounded-2xl p-6 hover-lift">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-2xl">🍳</span>
-                            <h3 class="text-xl font-semibold text-gray-800">Fazer um ovo frito</h3>
-                        </div>
-                        <ol class="space-y-2 text-gray-700">
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold">1</span>Pegar a frigideira</li>
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold">2</span>Colocar óleo na frigideira</li>
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold">3</span>Ligar o fogo</li>
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold">4</span>Quebrar o ovo na frigideira</li>
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold">5</span>Esperar cozinhar</li>
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold">6</span>Desligar o fogo</li>
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold">7</span>Servir</li>
-                        </ol>
-                    </div>
-
-                    <div class="bg-pastel-green/70 rounded-2xl p-6 hover-lift">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-2xl">🚗</span>
-                            <h3 class="text-xl font-semibold text-gray-800">Ir de casa para a escola</h3>
-                        </div>
-                        <ol class="space-y-2 text-gray-700">
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-green rounded-full flex items-center justify-center text-xs font-bold">1</span>Sair de casa</li>
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-green rounded-full flex items-center justify-center text-xs font-bold">2</span>Caminhar até o ponto</li>
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-green rounded-full flex items-center justify-center text-xs font-bold">3</span>Esperar o ônibus</li>
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-green rounded-full flex items-center justify-center text-xs font-bold">4</span>Subir no ônibus</li>
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-green rounded-full flex items-center justify-center text-xs font-bold">5</span>Descer no ponto da escola</li>
-                            <li class="flex items-center gap-2"><span class="w-6 h-6 bg-soft-green rounded-full flex items-center justify-center text-xs font-bold">6</span>Caminhar até a escola</li>
-                        </ol>
-                    </div>
-                </div>
+      <!-- Slide 2: O que é um Algoritmo? -->
+      <div
+        class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden"
+      >
+        <div class="space-y-8">
+          <div class="text-center">
+            <div
+              class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6"
+            >
+              Slide 2 de 13
             </div>
-        </div>
+            <h2
+              class="text-4xl font-bold gradient-text flex items-center justify-center gap-4"
+            >
+              🤔 O que é um Algoritmo?
+            </h2>
+          </div>
 
-        <!-- Slide 3: Características dos Algoritmos -->
-        <div class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden">
-            <div class="space-y-8">
-                <div class="text-center">
-                    <div class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6">
-                        Slide 3 de 12
-                    </div>
-                    <h2 class="text-4xl font-bold gradient-text flex items-center justify-center gap-4">
-                        ⭐ Características dos Algoritmos
-                    </h2>
-                </div>
+          <div
+            class="bg-gradient-to-r from-pastel-pink to-pastel-orange rounded-2xl p-8 text-center"
+          >
+            <p class="text-xl font-medium text-gray-800 leading-relaxed">
+              Um algoritmo é uma
+              <span class="font-bold text-purple-700"
+                >sequência finita de passos</span
+              >
+              organizados e bem definidos para resolver um problema ou executar
+              uma tarefa
+            </p>
+          </div>
 
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="bg-pastel-blue/70 rounded-2xl p-6 hover-lift border-l-4 border-soft-blue">
-                        <div class="text-3xl mb-3">🎯</div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Finitude</h3>
-                        <p class="text-gray-700">Deve ter um número finito de passos e terminar em algum momento</p>
-                    </div>
-                    
-                    <div class="bg-pastel-purple/70 rounded-2xl p-6 hover-lift border-l-4 border-soft-purple">
-                        <div class="text-3xl mb-3">📋</div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Definição</h3>
-                        <p class="text-gray-700">Cada passo deve ser claro e sem ambiguidade</p>
-                    </div>
-                    
-                    <div class="bg-pastel-pink/70 rounded-2xl p-6 hover-lift border-l-4 border-soft-pink">
-                        <div class="text-3xl mb-3">📥</div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Entrada</h3>
-                        <p class="text-gray-700">Pode receber zero ou mais dados de entrada</p>
-                    </div>
-                    
-                    <div class="bg-pastel-green/70 rounded-2xl p-6 hover-lift border-l-4 border-soft-green">
-                        <div class="text-3xl mb-3">📤</div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Saída</h3>
-                        <p class="text-gray-700">Deve produzir pelo menos um resultado</p>
-                    </div>
-                    
-                    <div class="bg-pastel-yellow/70 rounded-2xl p-6 hover-lift border-l-4 border-soft-yellow">
-                        <div class="text-3xl mb-3">⚡</div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Efetividade</h3>
-                        <p class="text-gray-700">Cada operação deve ser executável e simples</p>
-                    </div>
-                    
-                    <div class="bg-pastel-orange/70 rounded-2xl p-6 hover-lift border-l-4 border-soft-orange">
-                        <div class="text-3xl mb-3">🔄</div>
-                        <h3 class="text-xl font-semibold text-gray-800 mb-3">Determinismo</h3>
-                        <p class="text-gray-700">Mesma entrada sempre produz a mesma saída</p>
-                    </div>
-                </div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-pastel-yellow/70 rounded-2xl p-6 hover-lift">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-2xl">🍳</span>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Fazer um ovo frito
+                </h3>
+              </div>
+              <ol class="space-y-2 text-gray-700">
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold"
+                    >1</span
+                  >Pegar a frigideira
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold"
+                    >2</span
+                  >Colocar óleo na frigideira
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold"
+                    >3</span
+                  >Ligar o fogo
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold"
+                    >4</span
+                  >Quebrar o ovo na frigideira
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold"
+                    >5</span
+                  >Esperar cozinhar
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold"
+                    >6</span
+                  >Desligar o fogo
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-yellow rounded-full flex items-center justify-center text-xs font-bold"
+                    >7</span
+                  >Servir
+                </li>
+              </ol>
             </div>
-        </div>
 
-        <!-- Slide 4: Formas de Representação -->
-        <div class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden">
-            <div class="space-y-8">
-                <div class="text-center">
-                    <div class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6">
-                        Slide 4 de 12
-                    </div>
-                    <h2 class="text-4xl font-bold gradient-text flex items-center justify-center gap-4">
-                        📊 Formas de Representação
-                    </h2>
-                    <p class="text-lg text-gray-600 mt-4">Existem diferentes maneiras de representar um algoritmo</p>
-                </div>
-
-                <div class="grid md:grid-cols-3 gap-8">
-                    <div class="group bg-white rounded-2xl p-8 shadow-lg hover-lift border-2 border-pastel-blue hover:border-soft-blue transition-all duration-300">
-                        <div class="text-center">
-                            <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">📝</div>
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Linguagem Natural</h3>
-                            <p class="text-gray-600 leading-relaxed">Descrição em português, como uma receita ou manual de instruções</p>
-                            <div class="mt-4 bg-pastel-blue/50 rounded-lg p-3">
-                                <span class="text-sm font-medium text-gray-700">✅ Fácil de entender</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group bg-white rounded-2xl p-8 shadow-lg hover-lift border-2 border-pastel-purple hover:border-soft-purple transition-all duration-300">
-                        <div class="text-center">
-                            <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">📊</div>
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Fluxograma</h3>
-                            <p class="text-gray-600 leading-relaxed">Representação gráfica usando símbolos geométricos conectados</p>
-                            <div class="mt-4 bg-pastel-purple/50 rounded-lg p-3">
-                                <span class="text-sm font-medium text-gray-700">✅ Visual e claro</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="group bg-white rounded-2xl p-8 shadow-lg hover-lift border-2 border-pastel-pink hover:border-soft-pink transition-all duration-300">
-                        <div class="text-center">
-                            <div class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">💻</div>
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-4">Pseudocódigo</h3>
-                            <p class="text-gray-600 leading-relaxed">Linguagem estruturada, meio termo entre natural e programação</p>
-                            <div class="mt-4 bg-pastel-pink/50 rounded-lg p-3">
-                                <span class="text-sm font-medium text-gray-700">✅ Estruturado</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="bg-pastel-green/70 rounded-2xl p-6 hover-lift">
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-2xl">🚗</span>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Ir de casa para a escola
+                </h3>
+              </div>
+              <ol class="space-y-2 text-gray-700">
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-green rounded-full flex items-center justify-center text-xs font-bold"
+                    >1</span
+                  >Sair de casa
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-green rounded-full flex items-center justify-center text-xs font-bold"
+                    >2</span
+                  >Caminhar até o ponto
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-green rounded-full flex items-center justify-center text-xs font-bold"
+                    >3</span
+                  >Esperar o ônibus
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-green rounded-full flex items-center justify-center text-xs font-bold"
+                    >4</span
+                  >Subir no ônibus
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-green rounded-full flex items-center justify-center text-xs font-bold"
+                    >5</span
+                  >Descer no ponto da escola
+                </li>
+                <li class="flex items-center gap-2">
+                  <span
+                    class="w-6 h-6 bg-soft-green rounded-full flex items-center justify-center text-xs font-bold"
+                    >6</span
+                  >Caminhar até a escola
+                </li>
+              </ol>
             </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Slide 5: Linguagem Natural -->
-        <div class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden">
-            <div class="space-y-8">
-                <div class="text-center">
-                    <div class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6">
-                        Slide 5 de 12
-                    </div>
-                    <h2 class="text-4xl font-bold gradient-text flex items-center justify-center gap-4">
-                        📝 Linguagem Natural
-                    </h2>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="space-y-6">
-                        <div class="bg-pastel-green/70 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                                <span class="text-green-600">✅</span> Vantagens
-                            </h3>
-                            <ul class="space-y-3 text-gray-700">
-                                <li class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-soft-green rounded-full"></div>
-                                    Fácil de entender
-                                </li>
-                                <li class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-soft-green rounded-full"></div>
-                                    Não requer conhecimento técnico
-                                </li>
-                                <li class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-soft-green rounded-full"></div>
-                                    Próxima da linguagem humana
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="bg-pastel-orange/70 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                                <span class="text-orange-600">❌</span> Desvantagens
-                            </h3>
-                            <ul class="space-y-3 text-gray-700">
-                                <li class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-soft-orange rounded-full"></div>
-                                    Pode ser ambígua
-                                </li>
-                                <li class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-soft-orange rounded-full"></div>
-                                    Muito extensa
-                                </li>
-                                <li class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-soft-orange rounded-full"></div>
-                                    Difícil de converter para código
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="bg-pastel-blue/70 rounded-2xl p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                            <span class="text-2xl">📋</span> Exemplo: Calcular a média de duas notas
-                        </h3>
-                        <div class="space-y-3">
-                            <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
-                                <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white">1</span>
-                                <span class="text-gray-700">Solicitar a primeira nota</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
-                                <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white">2</span>
-                                <span class="text-gray-700">Ler e armazenar a primeira nota</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
-                                <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white">3</span>
-                                <span class="text-gray-700">Solicitar a segunda nota</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
-                                <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white">4</span>
-                                <span class="text-gray-700">Ler e armazenar a segunda nota</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
-                                <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white">5</span>
-                                <span class="text-gray-700">Somar as duas notas</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
-                                <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white">6</span>
-                                <span class="text-gray-700">Dividir a soma por 2</span>
-                            </div>
-                            <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
-                                <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white">7</span>
-                                <span class="text-gray-700">Mostrar o resultado</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+      <!-- Slide 3: Características dos Algoritmos -->
+      <div
+        class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden"
+      >
+        <div class="space-y-8">
+          <div class="text-center">
+            <div
+              class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6"
+            >
+              Slide 3 de 13
             </div>
-        </div>
+            <h2
+              class="text-4xl font-bold gradient-text flex items-center justify-center gap-4"
+            >
+              ⭐ Características dos Algoritmos
+            </h2>
+          </div>
 
-        <!-- Slide 6: Fluxograma -->
-        <div class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden">
-            <div class="space-y-8">
-                <div class="text-center">
-                    <div class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6">
-                        Slide 6 de 12
-                    </div>
-                    <h2 class="text-4xl font-bold gradient-text flex items-center justify-center gap-4">
-                        📊 Fluxograma
-                    </h2>
-                    <p class="text-lg text-gray-600 mt-4">Representação gráfica que usa símbolos padronizados</p>
-                </div>
-
-                <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
-                    <div class="text-center bg-pastel-green/70 rounded-2xl p-6 hover-lift">
-                        <div class="mb-4">
-                            <svg class="w-16 h-16 mx-auto" viewBox="0 0 100 60">
-                                <ellipse cx="50" cy="30" rx="45" ry="25" fill="#B8F0B8" stroke="#4CAF50" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-semibold text-gray-800">Início/Fim</h4>
-                        <p class="text-sm text-gray-600 mt-2">Marca o começo e o final</p>
-                    </div>
-
-                    <div class="text-center bg-pastel-blue/70 rounded-2xl p-6 hover-lift">
-                        <div class="mb-4">
-                            <svg class="w-16 h-16 mx-auto" viewBox="0 0 100 60">
-                                <rect x="10" y="15" width="80" height="30" fill="#B8D4F0" stroke="#2196F3" stroke-width="2" rx="4"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-semibold text-gray-800">Processo</h4>
-                        <p class="text-sm text-gray-600 mt-2">Operações e cálculos</p>
-                    </div>
-
-                    <div class="text-center bg-pastel-orange/70 rounded-2xl p-6 hover-lift">
-                        <div class="mb-4">
-                            <svg class="w-16 h-16 mx-auto" viewBox="0 0 100 60">
-                                <polygon points="50,10 80,30 50,50 20,30" fill="#F0D4B8" stroke="#FF9800" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-semibold text-gray-800">Decisão</h4>
-                        <p class="text-sm text-gray-600 mt-2">Condições e escolhas</p>
-                    </div>
-
-                    <div class="text-center bg-pastel-purple/70 rounded-2xl p-6 hover-lift">
-                        <div class="mb-4">
-                            <svg class="w-16 h-16 mx-auto" viewBox="0 0 100 60">
-                                <polygon points="20,15 80,15 90,30 80,45 20,45 10,30" fill="#D4B8F0" stroke="#9C27B0" stroke-width="2"/>
-                            </svg>
-                        </div>
-                        <h4 class="font-semibold text-gray-800">Entrada/Saída</h4>
-                        <p class="text-sm text-gray-600 mt-2">Dados de entrada e saída</p>
-                    </div>
-                </div>
-
-                <div class="bg-pastel-yellow/70 rounded-2xl p-6">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                        <span class="text-green-600">✅</span> Vantagens dos Fluxogramas
-                    </h3>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
-                            <div class="w-3 h-3 bg-soft-yellow rounded-full"></div>
-                            <span class="text-gray-700">Visual e fácil de entender</span>
-                        </div>
-                        <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
-                            <div class="w-3 h-3 bg-soft-yellow rounded-full"></div>
-                            <span class="text-gray-700">Mostra o fluxo de execução</span>
-                        </div>
-                        <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
-                            <div class="w-3 h-3 bg-soft-yellow rounded-full"></div>
-                            <span class="text-gray-700">Facilita identificação de erros</span>
-                        </div>
-                    </div>
-                </div>
+          <div class="grid md:grid-cols-3 gap-6">
+            <div
+              class="bg-pastel-blue/70 rounded-2xl p-6 hover-lift border-l-4 border-soft-blue"
+            >
+              <div class="text-3xl mb-3">🎯</div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">Finitude</h3>
+              <p class="text-gray-700">
+                Deve ter um número finito de passos e terminar em algum momento
+              </p>
             </div>
-        </div>
 
-        <!-- Slide 7: Pseudocódigo -->
-        <div class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden">
-            <div class="space-y-8">
-                <div class="text-center">
-                    <div class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6">
-                        Slide 7 de 12
-                    </div>
-                    <h2 class="text-4xl font-bold gradient-text flex items-center justify-center gap-4">
-                        💻 Pseudocódigo
-                    </h2>
-                    <p class="text-lg text-gray-600 mt-4">Linguagem estruturada, mais próxima da programação</p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="space-y-6">
-                        <div class="bg-pastel-purple/70 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">📋 Estrutura Básica</h3>
-                            <div class="bg-gray-800 rounded-lg p-4 font-mono text-sm">
-                                <div class="text-blue-300">ALGORITMO</div>
-                                <div class="text-green-300 ml-2">"Nome do Algoritmo"</div>
-                                <div class="text-yellow-300 mt-2">VAR</div>
-                                <div class="text-gray-400 ml-2">// declaração de variáveis</div>
-                                <div class="text-purple-300 mt-2">INÍCIO</div>
-                                <div class="text-gray-400 ml-2">// comandos do algoritmo</div>
-                                <div class="text-purple-300 mt-2">FIM</div>
-                            </div>
-                        </div>
-
-                        <div class="bg-pastel-green/70 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                                <span class="text-green-600">✅</span> Características
-                            </h3>
-                            <ul class="space-y-3 text-gray-700">
-                                <li class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-soft-green rounded-full"></div>
-                                    Estrutura clara e organizada
-                                </li>
-                                <li class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-soft-green rounded-full"></div>
-                                    Fácil conversão para código
-                                </li>
-                                <li class="flex items-center gap-3">
-                                    <div class="w-2 h-2 bg-soft-green rounded-full"></div>
-                                    Independente de linguagem
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="bg-pastel-blue/70 rounded-2xl p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                            <span class="text-2xl">📊</span> Exemplo: Calcular Média
-                        </h3>
-                        <div class="bg-gray-800 rounded-lg p-4 font-mono text-sm">
-                            <div class="text-blue-300">ALGORITMO <span class="text-green-300">"Calcular Média"</span></div>
-                            <div class="text-yellow-300 mt-2">VAR</div>
-                            <div class="text-white ml-4">nota1, nota2, media: <span class="text-orange-300">REAL</span></div>
-                            <div class="text-purple-300 mt-2">INÍCIO</div>
-                            <div class="text-cyan-300 ml-4">ESCREVA <span class="text-green-300">"Digite a primeira nota: "</span></div>
-                            <div class="text-cyan-300 ml-4">LEIA <span class="text-white">nota1</span></div>
-                            <div class="text-cyan-300 ml-4">ESCREVA <span class="text-green-300">"Digite a segunda nota: "</span></div>
-                            <div class="text-cyan-300 ml-4">LEIA <span class="text-white">nota2</span></div>
-                            <div class="text-white ml-4">media ← (nota1 + nota2) / 2</div>
-                            <div class="text-cyan-300 ml-4">ESCREVA <span class="text-green-300">"A média é: "</span>, <span class="text-white">media</span></div>
-                            <div class="text-purple-300 mt-2">FIM</div>
-                        </div>
-                    </div>
-                </div>
+            <div
+              class="bg-pastel-purple/70 rounded-2xl p-6 hover-lift border-l-4 border-soft-purple"
+            >
+              <div class="text-3xl mb-3">📋</div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                Definição
+              </h3>
+              <p class="text-gray-700">
+                Cada passo deve ser claro e sem ambiguidade
+              </p>
             </div>
-        </div>
 
-        <!-- Slide 8: Estrutura Básica de um Programa -->
-        <div class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden">
-            <div class="space-y-8">
-                <div class="text-center">
-                    <div class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6">
-                        Slide 8 de 12
-                    </div>
-                    <h2 class="text-4xl font-bold gradient-text flex items-center justify-center gap-4">
-                        🏗️ Estrutura Básica de um Programa
-                    </h2>
-                </div>
-
-                <div class="flex justify-center items-center mb-12">
-                    <div class="flex items-center gap-8">
-                        <div class="text-center bg-pastel-blue/70 rounded-2xl p-8 min-w-[180px] hover-lift">
-                            <div class="text-4xl mb-4">📥</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">ENTRADA</h3>
-                            <p class="text-gray-600">Dados fornecidos</p>
-                        </div>
-                        
-                        <div class="text-4xl text-soft-purple animate-pulse">→</div>
-                        
-                        <div class="text-center bg-pastel-purple/70 rounded-2xl p-8 min-w-[180px] hover-lift">
-                            <div class="text-4xl mb-4">⚙️</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">PROCESSAMENTO</h3>
-                            <p class="text-gray-600">Transformação dos dados</p>
-                        </div>
-                        
-                        <div class="text-4xl text-soft-purple animate-pulse">→</div>
-                        
-                        <div class="text-center bg-pastel-green/70 rounded-2xl p-8 min-w-[180px] hover-lift">
-                            <div class="text-4xl mb-4">📤</div>
-                            <h3 class="text-xl font-semibold text-gray-800 mb-2">SAÍDA</h3>
-                            <p class="text-gray-600">Resultado final</p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-pastel-yellow/70 rounded-2xl p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                            <span class="text-2xl">🧮</span> Exemplo: Calculadora de Área
-                        </h3>
-                        <div class="space-y-4">
-                            <div class="bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="text-blue-600">📥</span>
-                                    <strong>Entrada:</strong>
-                                </div>
-                                <p class="text-gray-700 ml-6">Base e altura do retângulo</p>
-                            </div>
-                            <div class="bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="text-purple-600">⚙️</span>
-                                    <strong>Processamento:</strong>
-                                </div>
-                                <p class="text-gray-700 ml-6">Multiplicar base × altura</p>
-                            </div>
-                            <div class="bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3 mb-2">
-                                    <span class="text-green-600">📤</span>
-                                    <strong>Saída:</strong>
-                                </div>
-                                <p class="text-gray-700 ml-6">Área calculada</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-pastel-pink/70 rounded-2xl p-6">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4">💡 Exemplo Interativo</h3>
-                        <div class="space-y-4">
-                            <div class="bg-white/70 rounded-lg p-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Base (metros):</label>
-                                <input type="number" id="base" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-soft-pink focus:border-transparent" placeholder="Ex: 5">
-                            </div>
-                            <div class="bg-white/70 rounded-lg p-4">
-                                <label class="block text-sm font-medium text-gray-700 mb-2">Altura (metros):</label>
-                                <input type="number" id="altura" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-soft-pink focus:border-transparent" placeholder="Ex: 3">
-                            </div>
-                            <button onclick="_calcularArea()" class="w-full bg-gradient-to-r from-soft-pink to-soft-purple text-white py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300">
-                                Calcular Área
-                            </button>
-                            <div id="resultado" class="bg-white/70 rounded-lg p-4 text-center font-semibold text-gray-800 hidden">
-                                Área: <span id="area-valor"></span> m²
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div
+              class="bg-pastel-pink/70 rounded-2xl p-6 hover-lift border-l-4 border-soft-pink"
+            >
+              <div class="text-3xl mb-3">📥</div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">Entrada</h3>
+              <p class="text-gray-700">
+                Pode receber zero ou mais dados de entrada
+              </p>
             </div>
-        </div>
 
-        <!-- Slide 9: Variáveis e Tipos de Dados -->
-        <div class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden">
-            <div class="space-y-8">
-                <div class="text-center">
-                    <div class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6">
-                        Slide 9 de 12
-                    </div>
-                    <h2 class="text-4xl font-bold gradient-text flex items-center justify-center gap-4">
-                        📦 Variáveis e Tipos de Dados
-                    </h2>
-                </div>
-
-                <div class="bg-gradient-to-r from-pastel-pink to-pastel-orange rounded-2xl p-8 text-center mb-8">
-                    <p class="text-xl font-medium text-gray-800 leading-relaxed">
-                        <span class="font-bold text-purple-700">Variável</span> é um espaço na memória para armazenar dados que podem mudar durante a execução
-                    </p>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="space-y-6">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-6">🏷️ Tipos de Dados Básicos</h3>
-                        
-                        <div class="grid grid-cols-2 gap-4">
-                            <div class="bg-gradient-to-br from-soft-blue to-pastel-blue rounded-2xl p-6 text-center hover-lift">
-                                <div class="text-3xl mb-3">🔢</div>
-                                <h4 class="text-lg font-semibold text-gray-800 mb-2">INTEIRO</h4>
-                                <p class="text-sm text-gray-600 mb-3">Números sem vírgula</p>
-                                <div class="bg-white/70 rounded-lg p-2 text-xs font-mono">
-                                    10, -5, 0, 100
-                                </div>
-                            </div>
-
-                            <div class="bg-gradient-to-br from-soft-purple to-pastel-purple rounded-2xl p-6 text-center hover-lift">
-                                <div class="text-3xl mb-3">🔢</div>
-                                <h4 class="text-lg font-semibold text-gray-800 mb-2">REAL</h4>
-                                <p class="text-sm text-gray-600 mb-3">Números com vírgula</p>
-                                <div class="bg-white/70 rounded-lg p-2 text-xs font-mono">
-                                    3.14, -2.5, 0.0
-                                </div>
-                            </div>
-
-                            <div class="bg-gradient-to-br from-soft-green to-pastel-green rounded-2xl p-6 text-center hover-lift">
-                                <div class="text-3xl mb-3">📝</div>
-                                <h4 class="text-lg font-semibold text-gray-800 mb-2">CARACTERE</h4>
-                                <p class="text-sm text-gray-600 mb-3">Letras, símbolos, textos</p>
-                                <div class="bg-white/70 rounded-lg p-2 text-xs font-mono">
-                                    "A", "João", "123"
-                                </div>
-                            </div>
-
-                            <div class="bg-gradient-to-br from-soft-yellow to-pastel-yellow rounded-2xl p-6 text-center hover-lift">
-                                <div class="text-3xl mb-3">✅</div>
-                                <h4 class="text-lg font-semibold text-gray-800 mb-2">LÓGICO</h4>
-                                <p class="text-sm text-gray-600 mb-3">Verdadeiro ou Falso</p>
-                                <div class="bg-white/70 rounded-lg p-2 text-xs font-mono">
-                                    VERDADEIRO, FALSO
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-6">
-                        <div class="bg-pastel-blue/70 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">📋 Exemplos de Declaração</h3>
-                            <div class="bg-gray-800 rounded-lg p-4 font-mono text-sm">
-                                <div class="text-yellow-300">VAR</div>
-                                <div class="text-white ml-4">idade: <span class="text-blue-300">INTEIRO</span></div>
-                                <div class="text-white ml-4">altura: <span class="text-purple-300">REAL</span></div>
-                                <div class="text-white ml-4">nome: <span class="text-green-300">CARACTERE</span></div>
-                                <div class="text-white ml-4">aprovado: <span class="text-yellow-300">LÓGICO</span></div>
-                            </div>
-                        </div>
-
-                        <div class="bg-pastel-green/70 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">💡 Dica Importante</h3>
-                            <div class="bg-white/70 rounded-lg p-4">
-                                <p class="text-gray-700 text-sm leading-relaxed">
-                                    <strong>Escolha nomes descritivos:</strong> Use "idade" ao invés de "x", "salario" ao invés de "s". 
-                                    Isso torna seu código mais fácil de entender!
-                                </p>
-                            </div>
-                        </div>
-
-                        <div class="bg-pastel-yellow/70 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4">🎯 Exemplo Prático</h3>
-                            <div class="space-y-2 text-sm">
-                                <div class="bg-white/70 rounded-lg p-3">
-                                    <strong>idade ← 18</strong> (INTEIRO)
-                                </div>
-                                <div class="bg-white/70 rounded-lg p-3">
-                                    <strong>altura ← 1.75</strong> (REAL)
-                                </div>
-                                <div class="bg-white/70 rounded-lg p-3">
-                                    <strong>nome ← "Ana"</strong> (CARACTERE)
-                                </div>
-                                <div class="bg-white/70 rounded-lg p-3">
-                                    <strong>aprovado ← VERDADEIRO</strong> (LÓGICO)
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div
+              class="bg-pastel-green/70 rounded-2xl p-6 hover-lift border-l-4 border-soft-green"
+            >
+              <div class="text-3xl mb-3">📤</div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">Saída</h3>
+              <p class="text-gray-700">Deve produzir pelo menos um resultado</p>
             </div>
-        </div>
 
-        <!-- Slide 10: Operadores -->
-        <div class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden">
-            <div class="space-y-8">
-                <div class="text-center">
-                    <div class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6">
-                        Slide 10 de 12
-                    </div>
-                    <h2 class="text-4xl font-bold gradient-text flex items-center justify-center gap-4">
-                        🔧 Operadores
-                    </h2>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="bg-pastel-blue/70 rounded-2xl p-6">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
-                            <span class="text-3xl">➕</span> Operadores Aritméticos
-                        </h3>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center font-bold text-white">+</span>
-                                    <span class="font-medium">Adição</span>
-                                </div>
-                                <span class="text-sm text-gray-600 font-mono">5 + 3 = 8</span>
-                            </div>
-                            <div class="flex items-center justify-between bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center font-bold text-white">-</span>
-                                    <span class="font-medium">Subtração</span>
-                                </div>
-                                <span class="text-sm text-gray-600 font-mono">8 - 3 = 5</span>
-                            </div>
-                            <div class="flex items-center justify-between bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center font-bold text-white">*</span>
-                                    <span class="font-medium">Multiplicação</span>
-                                </div>
-                                <span class="text-sm text-gray-600 font-mono">4 * 3 = 12</span>
-                            </div>
-                            <div class="flex items-center justify-between bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center font-bold text-white">/</span>
-                                    <span class="font-medium">Divisão</span>
-                                </div>
-                                <span class="text-sm text-gray-600 font-mono">15 / 3 = 5</span>
-                            </div>
-                            <div class="flex items-center justify-between bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center font-bold text-white text-xs">^</span>
-                                    <span class="font-medium">Exponenciação</span>
-                                </div>
-                                <span class="text-sm text-gray-600 font-mono">2 ^ 3 = 8</span>
-                            </div>
-                            <div class="flex items-center justify-between bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center font-bold text-white text-xs">%</span>
-                                    <span class="font-medium">Resto (MOD)</span>
-                                </div>
-                                <span class="text-sm text-gray-600 font-mono">15 MOD 4 = 3</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="bg-pastel-purple/70 rounded-2xl p-6">
-                        <h3 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3">
-                            <span class="text-3xl">🔍</span> Operadores Relacionais
-                        </h3>
-                        <div class="space-y-3">
-                            <div class="flex items-center justify-between bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 bg-soft-purple rounded-full flex items-center justify-center font-bold text-white">=</span>
-                                    <span class="font-medium">Igual a</span>
-                                </div>
-                                <span class="text-sm text-gray-600 font-mono">5 = 5 → V</span>
-                            </div>
-                            <div class="flex items-center justify-between bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 bg-soft-purple rounded-full flex items-center justify-center font-bold text-white text-xs">≠</span>
-                                    <span class="font-medium">Diferente de</span>
-                                </div>
-                                <span class="text-sm text-gray-600 font-mono">5 ≠ 3 → V</span>
-                            </div>
-                            <div class="flex items-center justify-between bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 bg-soft-purple rounded-full flex items-center justify-center font-bold text-white">></span>
-                                    <span class="font-medium">Maior que</span>
-                                </div>
-                                <span class="text-sm text-gray-600 font-mono">8 > 5 → V</span>
-                            </div>
-                            <div class="flex items-center justify-between bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 bg-soft-purple rounded-full flex items-center justify-center font-bold text-white"><</span>
-                                    <span class="font-medium">Menor que</span>
-                                </div>
-                                <span class="text-sm text-gray-600 font-mono">3 < 8 → V</span>
-                            </div>
-                            <div class="flex items-center justify-between bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 bg-soft-purple rounded-full flex items-center justify-center font-bold text-white text-xs">≥</span>
-                                    <span class="font-medium">Maior ou igual</span>
-                                </div>
-                                <span class="text-sm text-gray-600 font-mono">7 ≥ 7 → V</span>
-                            </div>
-                            <div class="flex items-center justify-between bg-white/70 rounded-lg p-4">
-                                <div class="flex items-center gap-3">
-                                    <span class="w-8 h-8 bg-soft-purple rounded-full flex items-center justify-center font-bold text-white text-xs">≤</span>
-                                    <span class="font-medium">Menor ou igual</span>
-                                </div>
-                                <span class="text-sm text-gray-600 font-mono">4 ≤ 6 → V</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-pastel-green/70 rounded-2xl p-6">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                        <span class="text-2xl">🧮</span> Exemplos Práticos
-                    </h3>
-                    <div class="grid md:grid-cols-3 gap-4">
-                        <div class="bg-white/70 rounded-lg p-4">
-                            <div class="font-mono text-sm mb-2">resultado ← 10 + 5 * 2</div>
-                            <div class="text-xs text-gray-600">resultado = 20</div>
-                        </div>
-                        <div class="bg-white/70 rounded-lg p-4">
-                            <div class="font-mono text-sm mb-2">aprovado ← nota ≥ 7</div>
-                            <div class="text-xs text-gray-600">VERDADEIRO se nota ≥ 7</div>
-                        </div>
-                        <div class="bg-white/70 rounded-lg p-4">
-                            <div class="font-mono text-sm mb-2">resto ← 15 MOD 4</div>
-                            <div class="text-xs text-gray-600">resto = 3</div>
-                        </div>
-                    </div>
-                </div>
+            <div
+              class="bg-pastel-yellow/70 rounded-2xl p-6 hover-lift border-l-4 border-soft-yellow"
+            >
+              <div class="text-3xl mb-3">⚡</div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                Efetividade
+              </h3>
+              <p class="text-gray-700">
+                Cada operação deve ser executável e simples
+              </p>
             </div>
-        </div>
 
-        <!-- Slide 11: Atividades Práticas -->
-        <div class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden">
-            <div class="space-y-8">
-                <div class="text-center">
-                    <div class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6">
-                        Slide 11 de 12
-                    </div>
-                    <h2 class="text-4xl font-bold gradient-text flex items-center justify-center gap-4">
-                        🎯 Atividades Práticas
-                    </h2>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-gradient-to-br from-pastel-green to-soft-green/30 rounded-2xl p-6 border-l-4 border-soft-green hover-lift">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-2xl">📝</span>
-                            <h3 class="text-xl font-semibold text-gray-800">Atividade 1: Linguagem Natural</h3>
-                        </div>
-                        <div class="bg-white/70 rounded-lg p-4 mb-4">
-                            <p class="font-medium text-gray-800 mb-2">🥪 Desafio: Escreva um algoritmo para fazer um sanduíche</p>
-                            <p class="text-sm text-gray-600">💡 Dica: Pense em todos os passos, desde pegar os ingredientes até servir!</p>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-600">
-                            <span class="w-2 h-2 bg-soft-green rounded-full"></span>
-                            <span>Tempo estimado: 10 minutos</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-gradient-to-br from-pastel-blue to-soft-blue/30 rounded-2xl p-6 border-l-4 border-soft-blue hover-lift">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-2xl">📊</span>
-                            <h3 class="text-xl font-semibold text-gray-800">Atividade 2: Fluxograma</h3>
-                        </div>
-                        <div class="bg-white/70 rounded-lg p-4 mb-4">
-                            <p class="font-medium text-gray-800 mb-2">🔢 Desafio: Crie um fluxograma para verificar se um número é par ou ímpar</p>
-                            <p class="text-sm text-gray-600">💡 Use os símbolos: início/fim, entrada, processo, decisão e saída</p>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-600">
-                            <span class="w-2 h-2 bg-soft-blue rounded-full"></span>
-                            <span>Tempo estimado: 15 minutos</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-gradient-to-br from-pastel-purple to-soft-purple/30 rounded-2xl p-6 border-l-4 border-soft-purple hover-lift">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-2xl">💻</span>
-                            <h3 class="text-xl font-semibold text-gray-800">Atividade 3: Pseudocódigo</h3>
-                        </div>
-                        <div class="bg-white/70 rounded-lg p-4 mb-4">
-                            <p class="font-medium text-gray-800 mb-2">⭕ Desafio: Escreva um pseudocódigo para calcular a área de um círculo</p>
-                            <p class="text-sm text-gray-600">💡 Fórmula: área = π × raio²</p>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-600">
-                            <span class="w-2 h-2 bg-soft-purple rounded-full"></span>
-                            <span>Tempo estimado: 12 minutos</span>
-                        </div>
-                    </div>
-
-                    <div class="bg-gradient-to-br from-pastel-orange to-soft-orange/30 rounded-2xl p-6 border-l-4 border-soft-orange hover-lift">
-                        <div class="flex items-center gap-3 mb-4">
-                            <span class="text-2xl">🔄</span>
-                            <h3 class="text-xl font-semibold text-gray-800">Atividade 4: Conversão</h3>
-                        </div>
-                        <div class="bg-white/70 rounded-lg p-4 mb-4">
-                            <p class="font-medium text-gray-800 mb-2">🔀 Desafio: Converta o algoritmo do sanduíche em fluxograma</p>
-                            <p class="text-sm text-gray-600">💡 Use a Atividade 1 como base para criar a representação gráfica</p>
-                        </div>
-                        <div class="flex items-center gap-2 text-sm text-gray-600">
-                            <span class="w-2 h-2 bg-soft-orange rounded-full"></span>
-                            <span>Tempo estimado: 20 minutos</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="bg-gradient-to-r from-pastel-yellow to-pastel-pink rounded-2xl p-6 text-center">
-                    <h3 class="text-xl font-semibold text-gray-800 mb-3">🏆 Desafio Extra</h3>
-                    <p class="text-gray-700 mb-4">Crie um algoritmo completo (linguagem natural + fluxograma + pseudocódigo) para calcular a média final de um aluno com 4 notas</p>
-                    <div class="inline-flex items-center gap-2 bg-white/70 rounded-full px-4 py-2 text-sm font-medium text-gray-700">
-                        <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
-                        Para quem terminar as outras atividades
-                    </div>
-                </div>
+            <div
+              class="bg-pastel-orange/70 rounded-2xl p-6 hover-lift border-l-4 border-soft-orange"
+            >
+              <div class="text-3xl mb-3">🔄</div>
+              <h3 class="text-xl font-semibold text-gray-800 mb-3">
+                Determinismo
+              </h3>
+              <p class="text-gray-700">
+                Mesma entrada sempre produz a mesma saída
+              </p>
             </div>
+          </div>
         </div>
+      </div>
 
-        <!-- Slide 12: Resumo e Próximos Passos -->
-        <div class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden">
-            <div class="space-y-8">
-                <div class="text-center">
-                    <div class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6">
-                        Slide 12 de 12
-                    </div>
-                    <h2 class="text-4xl font-bold gradient-text flex items-center justify-center gap-4">
-                        📚 Resumo da Aula
-                    </h2>
-                </div>
-
-                <div class="grid md:grid-cols-2 gap-8">
-                    <div class="space-y-6">
-                        <div class="bg-pastel-green/70 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                                <span class="text-green-600">✅</span> O que aprendemos hoje
-                            </h3>
-                            <ul class="space-y-3 text-gray-700">
-                                <li class="flex items-start gap-3">
-                                    <div class="w-2 h-2 bg-soft-green rounded-full mt-2"></div>
-                                    <span>Conceito e características dos algoritmos</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="w-2 h-2 bg-soft-green rounded-full mt-2"></div>
-                                    <span>Três formas de representação: linguagem natural, fluxograma e pseudocódigo</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="w-2 h-2 bg-soft-green rounded-full mt-2"></div>
-                                    <span>Estrutura básica: entrada → processamento → saída</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="w-2 h-2 bg-soft-green rounded-full mt-2"></div>
-                                    <span>Tipos de dados: inteiro, real, caractere, lógico</span>
-                                </li>
-                                <li class="flex items-start gap-3">
-                                    <div class="w-2 h-2 bg-soft-green rounded-full mt-2"></div>
-                                    <span>Operadores aritméticos e relacionais</span>
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="bg-pastel-blue/70 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                                <span class="text-2xl">💡</span> Pontos-chave para lembrar
-                            </h3>
-                            <div class="space-y-3 text-sm text-gray-700">
-                                <div class="bg-white/70 rounded-lg p-3">
-                                    <strong>Algoritmos</strong> são sequências lógicas de passos
-                                </div>
-                                <div class="bg-white/70 rounded-lg p-3">
-                                    <strong>Variáveis</strong> armazenam dados que podem mudar
-                                </div>
-                                <div class="bg-white/70 rounded-lg p-3">
-                                    <strong>Tipos de dados</strong> definem que informação pode ser armazenada
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="space-y-6">
-                        <div class="bg-gradient-to-br from-pastel-purple to-pastel-pink rounded-2xl p-8 text-center">
-                            <div class="text-4xl mb-4">🚀</div>
-                            <h3 class="text-2xl font-semibold text-gray-800 mb-3">Próxima Aula</h3>
-                            <p class="text-lg text-gray-700 font-medium">Estruturas de Controle</p>
-                            <p class="text-gray-600 mt-2">Sequencial, Condicional e Repetição</p>
-                        </div>
-
-                        <div class="bg-pastel-yellow/70 rounded-2xl p-6">
-                            <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2">
-                                <span class="text-2xl">📖</span> Para casa
-                            </h3>
-                            <ul class="space-y-2 text-sm text-gray-700">
-                                <li class="flex items-center gap-2">
-                                    <span class="w-2 h-2 bg-soft-yellow rounded-full"></span>
-                                    Termine as atividades práticas
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="w-2 h-2 bg-soft-yellow rounded-full"></span>
-                                    Pense em 3 algoritmos do seu dia a dia
-                                </li>
-                                <li class="flex items-center gap-2">
-                                    <span class="w-2 h-2 bg-soft-yellow rounded-full"></span>
-                                    Revise os tipos de dados
-                                </li>
-                            </ul>
-                        </div>
-
-                        <div class="text-center bg-gradient-to-r from-soft-blue to-soft-purple rounded-2xl p-6 text-white">
-                            <h3 class="text-xl font-semibold mb-2">❓ Dúvidas?</h3>
-                            <p class="text-lg">Vamos praticar juntos! 💪</p>
-                        </div>
-                    </div>
-                </div>
+      <!-- Slide 4: Formas de Representação -->
+      <div
+        class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden"
+      >
+        <div class="space-y-8">
+          <div class="text-center">
+            <div
+              class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6"
+            >
+              Slide 4 de 13
             </div>
+            <h2
+              class="text-4xl font-bold gradient-text flex items-center justify-center gap-4"
+            >
+              📊 Formas de Representação
+            </h2>
+            <p class="text-lg text-gray-600 mt-4">
+              Existem diferentes maneiras de representar um algoritmo
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-3 gap-8">
+            <div
+              class="group bg-white rounded-2xl p-8 shadow-lg hover-lift border-2 border-pastel-blue hover:border-soft-blue transition-all duration-300"
+            >
+              <div class="text-center">
+                <div
+                  class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300"
+                >
+                  📝
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  Linguagem Natural
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Descrição em português, como uma receita ou manual de
+                  instruções
+                </p>
+                <div class="mt-4 bg-pastel-blue/50 rounded-lg p-3">
+                  <span class="text-sm font-medium text-gray-700"
+                    >✅ Fácil de entender</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="group bg-white rounded-2xl p-8 shadow-lg hover-lift border-2 border-pastel-purple hover:border-soft-purple transition-all duration-300"
+            >
+              <div class="text-center">
+                <div
+                  class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300"
+                >
+                  📊
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  Fluxograma
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Representação gráfica usando símbolos geométricos conectados
+                </p>
+                <div class="mt-4 bg-pastel-purple/50 rounded-lg p-3">
+                  <span class="text-sm font-medium text-gray-700"
+                    >✅ Visual e claro</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="group bg-white rounded-2xl p-8 shadow-lg hover-lift border-2 border-pastel-pink hover:border-soft-pink transition-all duration-300"
+            >
+              <div class="text-center">
+                <div
+                  class="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300"
+                >
+                  💻
+                </div>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">
+                  Pseudocódigo
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  Linguagem estruturada, meio termo entre natural e programação
+                </p>
+                <div class="mt-4 bg-pastel-pink/50 rounded-lg p-3">
+                  <span class="text-sm font-medium text-gray-700"
+                    >✅ Estruturado</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <!-- Slide 5: Linguagem Natural -->
+      <div
+        class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden"
+      >
+        <div class="space-y-8">
+          <div class="text-center">
+            <div
+              class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6"
+            >
+              Slide 5 de 13
+            </div>
+            <h2
+              class="text-4xl font-bold gradient-text flex items-center justify-center gap-4"
+            >
+              📝 Linguagem Natural
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div class="bg-pastel-green/70 rounded-2xl p-6">
+                <h3
+                  class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+                >
+                  <span class="text-green-600">✅</span> Vantagens
+                </h3>
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-soft-green rounded-full"></div>
+                    Fácil de entender
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-soft-green rounded-full"></div>
+                    Não requer conhecimento técnico
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-soft-green rounded-full"></div>
+                    Próxima da linguagem humana
+                  </li>
+                </ul>
+              </div>
+
+              <div class="bg-pastel-orange/70 rounded-2xl p-6">
+                <h3
+                  class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+                >
+                  <span class="text-orange-600">❌</span> Desvantagens
+                </h3>
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-soft-orange rounded-full"></div>
+                    Pode ser ambígua
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-soft-orange rounded-full"></div>
+                    Muito extensa
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-soft-orange rounded-full"></div>
+                    Difícil de converter para código
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="bg-pastel-blue/70 rounded-2xl p-6">
+              <h3
+                class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+              >
+                <span class="text-2xl">📋</span> Exemplo: Calcular a média de
+                duas notas
+              </h3>
+              <div class="space-y-3">
+                <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
+                  <span
+                    class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white"
+                    >1</span
+                  >
+                  <span class="text-gray-700">Solicitar a primeira nota</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
+                  <span
+                    class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white"
+                    >2</span
+                  >
+                  <span class="text-gray-700"
+                    >Ler e armazenar a primeira nota</span
+                  >
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
+                  <span
+                    class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white"
+                    >3</span
+                  >
+                  <span class="text-gray-700">Solicitar a segunda nota</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
+                  <span
+                    class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white"
+                    >4</span
+                  >
+                  <span class="text-gray-700"
+                    >Ler e armazenar a segunda nota</span
+                  >
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
+                  <span
+                    class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white"
+                    >5</span
+                  >
+                  <span class="text-gray-700">Somar as duas notas</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
+                  <span
+                    class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white"
+                    >6</span
+                  >
+                  <span class="text-gray-700">Dividir a soma por 2</span>
+                </div>
+                <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
+                  <span
+                    class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center text-sm font-bold text-white"
+                    >7</span
+                  >
+                  <span class="text-gray-700">Mostrar o resultado</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 6: Fluxograma -->
+      <div
+        class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden"
+      >
+        <div class="space-y-8">
+          <div class="text-center">
+            <div
+              class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6"
+            >
+              Slide 6 de 13
+            </div>
+            <h2
+              class="text-4xl font-bold gradient-text flex items-center justify-center gap-4"
+            >
+              📊 Fluxograma
+            </h2>
+            <p class="text-lg text-gray-600 mt-4">
+              Representação gráfica que usa símbolos padronizados
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-8">
+            <div
+              class="text-center bg-pastel-green/70 rounded-2xl p-6 hover-lift"
+            >
+              <div class="mb-4">
+                <svg class="w-16 h-16 mx-auto" viewBox="0 0 100 60">
+                  <ellipse
+                    cx="50"
+                    cy="30"
+                    rx="45"
+                    ry="25"
+                    fill="#B8F0B8"
+                    stroke="#4CAF50"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <h4 class="font-semibold text-gray-800">Início/Fim</h4>
+              <p class="text-sm text-gray-600 mt-2">Marca o começo e o final</p>
+            </div>
+
+            <div
+              class="text-center bg-pastel-blue/70 rounded-2xl p-6 hover-lift"
+            >
+              <div class="mb-4">
+                <svg class="w-16 h-16 mx-auto" viewBox="0 0 100 60">
+                  <rect
+                    x="10"
+                    y="15"
+                    width="80"
+                    height="30"
+                    fill="#B8D4F0"
+                    stroke="#2196F3"
+                    stroke-width="2"
+                    rx="4"
+                  />
+                </svg>
+              </div>
+              <h4 class="font-semibold text-gray-800">Processo</h4>
+              <p class="text-sm text-gray-600 mt-2">Operações e cálculos</p>
+            </div>
+
+            <div
+              class="text-center bg-pastel-orange/70 rounded-2xl p-6 hover-lift"
+            >
+              <div class="mb-4">
+                <svg class="w-16 h-16 mx-auto" viewBox="0 0 100 60">
+                  <polygon
+                    points="50,10 80,30 50,50 20,30"
+                    fill="#F0D4B8"
+                    stroke="#FF9800"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <h4 class="font-semibold text-gray-800">Decisão</h4>
+              <p class="text-sm text-gray-600 mt-2">Condições e escolhas</p>
+            </div>
+
+            <div
+              class="text-center bg-pastel-purple/70 rounded-2xl p-6 hover-lift"
+            >
+              <div class="mb-4">
+                <svg class="w-16 h-16 mx-auto" viewBox="0 0 100 60">
+                  <polygon
+                    points="20,15 80,15 90,30 80,45 20,45 10,30"
+                    fill="#D4B8F0"
+                    stroke="#9C27B0"
+                    stroke-width="2"
+                  />
+                </svg>
+              </div>
+              <h4 class="font-semibold text-gray-800">Entrada/Saída</h4>
+              <p class="text-sm text-gray-600 mt-2">Dados de entrada e saída</p>
+            </div>
+          </div>
+
+          <div class="bg-pastel-yellow/70 rounded-2xl p-6">
+            <h3
+              class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+            >
+              <span class="text-green-600">✅</span> Vantagens dos Fluxogramas
+            </h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
+                <div class="w-3 h-3 bg-soft-yellow rounded-full"></div>
+                <span class="text-gray-700">Visual e fácil de entender</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
+                <div class="w-3 h-3 bg-soft-yellow rounded-full"></div>
+                <span class="text-gray-700">Mostra o fluxo de execução</span>
+              </div>
+              <div class="flex items-center gap-3 p-3 bg-white/70 rounded-lg">
+                <div class="w-3 h-3 bg-soft-yellow rounded-full"></div>
+                <span class="text-gray-700"
+                  >Facilita identificação de erros</span
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 7: Pseudocódigo -->
+      <div
+        class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden"
+      >
+        <div class="space-y-8">
+          <div class="text-center">
+            <div
+              class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6"
+            >
+              Slide 7 de 13
+            </div>
+            <h2
+              class="text-4xl font-bold gradient-text flex items-center justify-center gap-4"
+            >
+              💻 Pseudocódigo
+            </h2>
+            <p class="text-lg text-gray-600 mt-4">
+              Linguagem estruturada, mais próxima da programação
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div class="bg-pastel-purple/70 rounded-2xl p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  📋 Estrutura Básica
+                </h3>
+                <div class="bg-gray-800 rounded-lg p-4 font-mono text-sm">
+                  <div class="text-blue-300">ALGORITMO</div>
+                  <div class="text-green-300 ml-2">"Nome do Algoritmo"</div>
+                  <div class="text-yellow-300 mt-2">VAR</div>
+                  <div class="text-gray-400 ml-2">
+                    // declaração de variáveis
+                  </div>
+                  <div class="text-purple-300 mt-2">INÍCIO</div>
+                  <div class="text-gray-400 ml-2">// comandos do algoritmo</div>
+                  <div class="text-purple-300 mt-2">FIM</div>
+                </div>
+              </div>
+
+              <div class="bg-pastel-green/70 rounded-2xl p-6">
+                <h3
+                  class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+                >
+                  <span class="text-green-600">✅</span> Características
+                </h3>
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-soft-green rounded-full"></div>
+                    Estrutura clara e organizada
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-soft-green rounded-full"></div>
+                    Fácil conversão para código
+                  </li>
+                  <li class="flex items-center gap-3">
+                    <div class="w-2 h-2 bg-soft-green rounded-full"></div>
+                    Independente de linguagem
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="bg-pastel-blue/70 rounded-2xl p-6">
+              <h3
+                class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+              >
+                <span class="text-2xl">📊</span> Exemplo: Calcular Média
+              </h3>
+              <div class="bg-gray-800 rounded-lg p-4 font-mono text-sm">
+                <div class="text-blue-300">
+                  ALGORITMO <span class="text-green-300">"Calcular Média"</span>
+                </div>
+                <div class="text-yellow-300 mt-2">VAR</div>
+                <div class="text-white ml-4">
+                  nota1, nota2, media: <span class="text-orange-300">REAL</span>
+                </div>
+                <div class="text-purple-300 mt-2">INÍCIO</div>
+                <div class="text-cyan-300 ml-4">
+                  ESCREVA
+                  <span class="text-green-300">"Digite a primeira nota: "</span>
+                </div>
+                <div class="text-cyan-300 ml-4">
+                  LEIA <span class="text-white">nota1</span>
+                </div>
+                <div class="text-cyan-300 ml-4">
+                  ESCREVA
+                  <span class="text-green-300">"Digite a segunda nota: "</span>
+                </div>
+                <div class="text-cyan-300 ml-4">
+                  LEIA <span class="text-white">nota2</span>
+                </div>
+                <div class="text-white ml-4">media ← (nota1 + nota2) / 2</div>
+                <div class="text-cyan-300 ml-4">
+                  ESCREVA <span class="text-green-300">"A média é: "</span>,
+                  <span class="text-white">media</span>
+                </div>
+                <div class="text-purple-300 mt-2">FIM</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 8: Do Pseudocódigo para Java -->
+      <div
+        class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden"
+      >
+        <div class="space-y-8">
+          <div class="text-center">
+            <div
+              class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6"
+            >
+              Slide 8 de 13
+            </div>
+            <h2
+              class="text-4xl font-bold gradient-text flex items-center justify-center gap-4"
+            >
+              🔄 Do Pseudocódigo para Java
+            </h2>
+            <p class="text-lg text-gray-600 mt-4">
+              Vamos ver como traduzir nosso pseudocódigo para uma linguagem real
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-pastel-blue/70 rounded-2xl p-6">
+              <h3
+                class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+              >
+                <span class="text-2xl">📝</span> Pseudocódigo
+              </h3>
+              <div class="bg-gray-800 rounded-lg p-4 font-mono text-sm">
+                <div class="text-blue-300">
+                  ALGORITMO <span class="text-green-300">"Calcular Média"</span>
+                </div>
+                <div class="text-yellow-300 mt-2">VAR</div>
+                <div class="text-white ml-4">
+                  nota1, nota2, media: <span class="text-orange-300">REAL</span>
+                </div>
+                <div class="text-purple-300 mt-2">INÍCIO</div>
+                <div class="text-cyan-300 ml-4">
+                  ESCREVA
+                  <span class="text-green-300">"Digite a primeira nota: "</span>
+                </div>
+                <div class="text-cyan-300 ml-4">
+                  LEIA <span class="text-white">nota1</span>
+                </div>
+                <div class="text-cyan-300 ml-4">
+                  ESCREVA
+                  <span class="text-green-300">"Digite a segunda nota: "</span>
+                </div>
+                <div class="text-cyan-300 ml-4">
+                  LEIA <span class="text-white">nota2</span>
+                </div>
+                <div class="text-white ml-4">media ← (nota1 + nota2) / 2</div>
+                <div class="text-cyan-300 ml-4">
+                  ESCREVA <span class="text-green-300">"A média é: "</span>,
+                  <span class="text-white">media</span>
+                </div>
+                <div class="text-purple-300 mt-2">FIM</div>
+              </div>
+            </div>
+
+            <div class="bg-pastel-orange/70 rounded-2xl p-6">
+              <h3
+                class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+              >
+                <span class="text-2xl">☕</span> Código Java
+              </h3>
+              <div class="bg-gray-800 rounded-lg p-4 font-mono text-sm">
+                <div class="text-purple-300">
+                  import <span class="text-white">java.util.Scanner;</span>
+                </div>
+                <div class="text-blue-300 mt-2">
+                  public class
+                  <span class="text-yellow-300">CalcularMedia</span> {
+                </div>
+                <div class="text-blue-300 ml-2 mt-1">
+                  public static void
+                  <span class="text-yellow-300">main</span>(<span
+                    class="text-orange-300"
+                    >String[]</span
+                  >
+                  <span class="text-white">args</span>) {
+                </div>
+                <div class="text-orange-300 ml-4">
+                  Scanner <span class="text-white">scanner</span> =
+                  <span class="text-blue-300">new</span>
+                  <span class="text-orange-300">Scanner</span>(<span
+                    class="text-white"
+                    >System.in</span
+                  >);
+                </div>
+                <div class="text-orange-300 ml-4 mt-1">
+                  double <span class="text-white">nota1, nota2, media</span>;
+                </div>
+                <div class="text-white ml-4 mt-1">
+                  System.out.<span class="text-cyan-300">print</span>(<span
+                    class="text-green-300"
+                    >"Digite a primeira nota: "</span
+                  >);
+                </div>
+                <div class="text-white ml-4">
+                  nota1 = scanner.<span class="text-cyan-300">nextDouble</span
+                  >();
+                </div>
+                <div class="text-white ml-4">
+                  System.out.<span class="text-cyan-300">print</span>(<span
+                    class="text-green-300"
+                    >"Digite a segunda nota: "</span
+                  >);
+                </div>
+                <div class="text-white ml-4">
+                  nota2 = scanner.<span class="text-cyan-300">nextDouble</span
+                  >();
+                </div>
+                <div class="text-white ml-4">media = (nota1 + nota2) / 2;</div>
+                <div class="text-white ml-4">
+                  System.out.<span class="text-cyan-300">println</span>(<span
+                    class="text-green-300"
+                    >"A média é: "</span
+                  >
+                  + media);
+                </div>
+                <div class="text-blue-300 ml-2">}</div>
+                <div class="text-blue-300">}</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-pastel-green/70 rounded-2xl p-6">
+            <h3
+              class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+            >
+              <span class="text-2xl">🔗</span> Correspondências Principais
+            </h3>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="space-y-3">
+                <div
+                  class="bg-white/70 rounded-lg p-3 flex items-center justify-between"
+                >
+                  <span class="font-mono text-sm text-blue-600">ALGORITMO</span>
+                  <span class="text-gray-400">→</span>
+                  <span class="font-mono text-sm text-orange-600"
+                    >public class</span
+                  >
+                </div>
+                <div
+                  class="bg-white/70 rounded-lg p-3 flex items-center justify-between"
+                >
+                  <span class="font-mono text-sm text-blue-600">VAR</span>
+                  <span class="text-gray-400">→</span>
+                  <span class="font-mono text-sm text-orange-600"
+                    >double, int, String</span
+                  >
+                </div>
+                <div
+                  class="bg-white/70 rounded-lg p-3 flex items-center justify-between"
+                >
+                  <span class="font-mono text-sm text-blue-600">LEIA</span>
+                  <span class="text-gray-400">→</span>
+                  <span class="font-mono text-sm text-orange-600"
+                    >scanner.nextDouble()</span
+                  >
+                </div>
+              </div>
+              <div class="space-y-3">
+                <div
+                  class="bg-white/70 rounded-lg p-3 flex items-center justify-between"
+                >
+                  <span class="font-mono text-sm text-blue-600">ESCREVA</span>
+                  <span class="text-gray-400">→</span>
+                  <span class="font-mono text-sm text-orange-600"
+                    >System.out.print</span
+                  >
+                </div>
+                <div
+                  class="bg-white/70 rounded-lg p-3 flex items-center justify-between"
+                >
+                  <span class="font-mono text-sm text-blue-600">←</span>
+                  <span class="text-gray-400">→</span>
+                  <span class="font-mono text-sm text-orange-600">=</span>
+                </div>
+                <div
+                  class="bg-white/70 rounded-lg p-3 flex items-center justify-between"
+                >
+                  <span class="font-mono text-sm text-blue-600">REAL</span>
+                  <span class="text-gray-400">→</span>
+                  <span class="font-mono text-sm text-orange-600">double</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-pastel-yellow/70 rounded-2xl p-6">
+            <h3
+              class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+            >
+              <span class="text-2xl">⚠️</span> Diferenças Importantes
+            </h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-white/70 rounded-lg p-4">
+                <h4 class="font-semibold text-gray-800 mb-2">Estrutura</h4>
+                <p class="text-sm text-gray-600">
+                  Java precisa de classes, métodos e imports
+                </p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4">
+                <h4 class="font-semibold text-gray-800 mb-2">Sintaxe</h4>
+                <p class="text-sm text-gray-600">
+                  Java é mais rigoroso com pontos e vírgulas, chaves
+                </p>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4">
+                <h4 class="font-semibold text-gray-800 mb-2">Tipos</h4>
+                <p class="text-sm text-gray-600">
+                  Java tem tipos específicos (double, int, String)
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 9: Estrutura Básica de um Programa -->
+      <div
+        class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden"
+      >
+        <div class="space-y-8">
+          <div class="text-center">
+            <div
+              class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6"
+            >
+              Slide 9 de 13
+            </div>
+            <h2
+              class="text-4xl font-bold gradient-text flex items-center justify-center gap-4"
+            >
+              🏗️ Estrutura Básica de um Programa
+            </h2>
+          </div>
+
+          <div class="flex justify-center items-center mb-12">
+            <div class="flex items-center gap-8">
+              <div
+                class="text-center bg-pastel-blue/70 rounded-2xl p-8 min-w-[180px] hover-lift"
+              >
+                <div class="text-4xl mb-4">📥</div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  ENTRADA
+                </h3>
+                <p class="text-gray-600">Dados fornecidos</p>
+              </div>
+
+              <div class="text-4xl text-soft-purple animate-pulse">→</div>
+
+              <div
+                class="text-center bg-pastel-purple/70 rounded-2xl p-8 min-w-[180px] hover-lift"
+              >
+                <div class="text-4xl mb-4">⚙️</div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">
+                  PROCESSAMENTO
+                </h3>
+                <p class="text-gray-600">Transformação dos dados</p>
+              </div>
+
+              <div class="text-4xl text-soft-purple animate-pulse">→</div>
+
+              <div
+                class="text-center bg-pastel-green/70 rounded-2xl p-8 min-w-[180px] hover-lift"
+              >
+                <div class="text-4xl mb-4">📤</div>
+                <h3 class="text-xl font-semibold text-gray-800 mb-2">SAÍDA</h3>
+                <p class="text-gray-600">Resultado final</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-pastel-yellow/70 rounded-2xl p-6">
+              <h3
+                class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+              >
+                <span class="text-2xl">🧮</span> Exemplo: Calculadora de Área
+              </h3>
+              <div class="space-y-4">
+                <div class="bg-white/70 rounded-lg p-4">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="text-blue-600">📥</span>
+                    <strong>Entrada:</strong>
+                  </div>
+                  <p class="text-gray-700 ml-6">Base e altura do retângulo</p>
+                </div>
+                <div class="bg-white/70 rounded-lg p-4">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="text-purple-600">⚙️</span>
+                    <strong>Processamento:</strong>
+                  </div>
+                  <p class="text-gray-700 ml-6">Multiplicar base × altura</p>
+                </div>
+                <div class="bg-white/70 rounded-lg p-4">
+                  <div class="flex items-center gap-3 mb-2">
+                    <span class="text-green-600">📤</span>
+                    <strong>Saída:</strong>
+                  </div>
+                  <p class="text-gray-700 ml-6">Área calculada</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-pastel-pink/70 rounded-2xl p-6">
+              <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                💡 Exemplo Interativo
+              </h3>
+              <div class="space-y-4">
+                <div class="bg-white/70 rounded-lg p-4">
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Base (metros):</label
+                  >
+                  <input
+                    type="number"
+                    id="base"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-soft-pink focus:border-transparent"
+                    placeholder="Ex: 5"
+                  />
+                </div>
+                <div class="bg-white/70 rounded-lg p-4">
+                  <label class="block text-sm font-medium text-gray-700 mb-2"
+                    >Altura (metros):</label
+                  >
+                  <input
+                    type="number"
+                    id="altura"
+                    class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-soft-pink focus:border-transparent"
+                    placeholder="Ex: 3"
+                  />
+                </div>
+                <button
+                  onclick="_calcularArea()"
+                  class="w-full bg-gradient-to-r from-soft-pink to-soft-purple text-white py-3 rounded-lg font-medium hover:shadow-lg transition-all duration-300"
+                >
+                  Calcular Área
+                </button>
+                <div
+                  id="resultado"
+                  class="bg-white/70 rounded-lg p-4 text-center font-semibold text-gray-800 hidden"
+                >
+                  Área: <span id="area-valor"></span> m²
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 10: Variáveis e Tipos de Dados -->
+      <div
+        class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden"
+      >
+        <div class="space-y-8">
+          <div class="text-center">
+            <div
+              class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6"
+            >
+              Slide 10 de 13
+            </div>
+            <h2
+              class="text-4xl font-bold gradient-text flex items-center justify-center gap-4"
+            >
+              📦 Variáveis e Tipos de Dados
+            </h2>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-pastel-pink to-pastel-orange rounded-2xl p-8 text-center mb-8"
+          >
+            <p class="text-xl font-medium text-gray-800 leading-relaxed">
+              <span class="font-bold text-purple-700">Variável</span> é um
+              espaço na memória para armazenar dados que podem mudar durante a
+              execução
+            </p>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <h3 class="text-2xl font-semibold text-gray-800 mb-6">
+                🏷️ Tipos de Dados Básicos
+              </h3>
+
+              <div class="grid grid-cols-2 gap-4">
+                <div
+                  class="bg-gradient-to-br from-soft-blue to-pastel-blue rounded-2xl p-6 text-center hover-lift"
+                >
+                  <div class="text-3xl mb-3">🔢</div>
+                  <h4 class="text-lg font-semibold text-gray-800 mb-2">
+                    INTEIRO
+                  </h4>
+                  <p class="text-sm text-gray-600 mb-3">Números sem vírgula</p>
+                  <div class="bg-white/70 rounded-lg p-2 text-xs font-mono">
+                    10, -5, 0, 100
+                  </div>
+                </div>
+
+                <div
+                  class="bg-gradient-to-br from-soft-purple to-pastel-purple rounded-2xl p-6 text-center hover-lift"
+                >
+                  <div class="text-3xl mb-3">🔢</div>
+                  <h4 class="text-lg font-semibold text-gray-800 mb-2">REAL</h4>
+                  <p class="text-sm text-gray-600 mb-3">Números com vírgula</p>
+                  <div class="bg-white/70 rounded-lg p-2 text-xs font-mono">
+                    3.14, -2.5, 0.0
+                  </div>
+                </div>
+
+                <div
+                  class="bg-gradient-to-br from-soft-green to-pastel-green rounded-2xl p-6 text-center hover-lift"
+                >
+                  <div class="text-3xl mb-3">📝</div>
+                  <h4 class="text-lg font-semibold text-gray-800 mb-2">
+                    CARACTERE
+                  </h4>
+                  <p class="text-sm text-gray-600 mb-3">
+                    Letras, símbolos, textos
+                  </p>
+                  <div class="bg-white/70 rounded-lg p-2 text-xs font-mono">
+                    "A", "João", "123"
+                  </div>
+                </div>
+
+                <div
+                  class="bg-gradient-to-br from-soft-yellow to-pastel-yellow rounded-2xl p-6 text-center hover-lift"
+                >
+                  <div class="text-3xl mb-3">✅</div>
+                  <h4 class="text-lg font-semibold text-gray-800 mb-2">
+                    LÓGICO
+                  </h4>
+                  <p class="text-sm text-gray-600 mb-3">Verdadeiro ou Falso</p>
+                  <div class="bg-white/70 rounded-lg p-2 text-xs font-mono">
+                    VERDADEIRO, FALSO
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div class="bg-pastel-blue/70 rounded-2xl p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  📋 Exemplos de Declaração
+                </h3>
+                <div class="bg-gray-800 rounded-lg p-4 font-mono text-sm">
+                  <div class="text-yellow-300">VAR</div>
+                  <div class="text-white ml-4">
+                    idade: <span class="text-blue-300">INTEIRO</span>
+                  </div>
+                  <div class="text-white ml-4">
+                    altura: <span class="text-purple-300">REAL</span>
+                  </div>
+                  <div class="text-white ml-4">
+                    nome: <span class="text-green-300">CARACTERE</span>
+                  </div>
+                  <div class="text-white ml-4">
+                    aprovado: <span class="text-yellow-300">LÓGICO</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="bg-pastel-green/70 rounded-2xl p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  💡 Dica Importante
+                </h3>
+                <div class="bg-white/70 rounded-lg p-4">
+                  <p class="text-gray-700 text-sm leading-relaxed">
+                    <strong>Escolha nomes descritivos:</strong> Use "idade" ao
+                    invés de "x", "salario" ao invés de "s". Isso torna seu
+                    código mais fácil de entender!
+                  </p>
+                </div>
+              </div>
+
+              <div class="bg-pastel-yellow/70 rounded-2xl p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">
+                  🎯 Exemplo Prático
+                </h3>
+                <div class="space-y-2 text-sm">
+                  <div class="bg-white/70 rounded-lg p-3">
+                    <strong>idade ← 18</strong> (INTEIRO)
+                  </div>
+                  <div class="bg-white/70 rounded-lg p-3">
+                    <strong>altura ← 1.75</strong> (REAL)
+                  </div>
+                  <div class="bg-white/70 rounded-lg p-3">
+                    <strong>nome ← "Ana"</strong> (CARACTERE)
+                  </div>
+                  <div class="bg-white/70 rounded-lg p-3">
+                    <strong>aprovado ← VERDADEIRO</strong> (LÓGICO)
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 11: Operadores -->
+      <div
+        class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden"
+      >
+        <div class="space-y-8">
+          <div class="text-center">
+            <div
+              class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6"
+            >
+              Slide 11 de 13
+            </div>
+            <h2
+              class="text-4xl font-bold gradient-text flex items-center justify-center gap-4"
+            >
+              🔧 Operadores
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="bg-pastel-blue/70 rounded-2xl p-6">
+              <h3
+                class="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3"
+              >
+                <span class="text-3xl">➕</span> Operadores Aritméticos
+              </h3>
+              <div class="space-y-3">
+                <div
+                  class="flex items-center justify-between bg-white/70 rounded-lg p-4"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center font-bold text-white"
+                      >+</span
+                    >
+                    <span class="font-medium">Adição</span>
+                  </div>
+                  <span class="text-sm text-gray-600 font-mono">5 + 3 = 8</span>
+                </div>
+                <div
+                  class="flex items-center justify-between bg-white/70 rounded-lg p-4"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center font-bold text-white"
+                      >-</span
+                    >
+                    <span class="font-medium">Subtração</span>
+                  </div>
+                  <span class="text-sm text-gray-600 font-mono">8 - 3 = 5</span>
+                </div>
+                <div
+                  class="flex items-center justify-between bg-white/70 rounded-lg p-4"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center font-bold text-white"
+                      >*</span
+                    >
+                    <span class="font-medium">Multiplicação</span>
+                  </div>
+                  <span class="text-sm text-gray-600 font-mono"
+                    >4 * 3 = 12</span
+                  >
+                </div>
+                <div
+                  class="flex items-center justify-between bg-white/70 rounded-lg p-4"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center font-bold text-white"
+                      >/</span
+                    >
+                    <span class="font-medium">Divisão</span>
+                  </div>
+                  <span class="text-sm text-gray-600 font-mono"
+                    >15 / 3 = 5</span
+                  >
+                </div>
+                <div
+                  class="flex items-center justify-between bg-white/70 rounded-lg p-4"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center font-bold text-white text-xs"
+                      >^</span
+                    >
+                    <span class="font-medium">Exponenciação</span>
+                  </div>
+                  <span class="text-sm text-gray-600 font-mono">2 ^ 3 = 8</span>
+                </div>
+                <div
+                  class="flex items-center justify-between bg-white/70 rounded-lg p-4"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="w-8 h-8 bg-soft-blue rounded-full flex items-center justify-center font-bold text-white text-xs"
+                      >%</span
+                    >
+                    <span class="font-medium">Resto (MOD)</span>
+                  </div>
+                  <span class="text-sm text-gray-600 font-mono"
+                    >15 MOD 4 = 3</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-pastel-purple/70 rounded-2xl p-6">
+              <h3
+                class="text-2xl font-semibold text-gray-800 mb-6 flex items-center gap-3"
+              >
+                <span class="text-3xl">🔍</span> Operadores Relacionais
+              </h3>
+              <div class="space-y-3">
+                <div
+                  class="flex items-center justify-between bg-white/70 rounded-lg p-4"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="w-8 h-8 bg-soft-purple rounded-full flex items-center justify-center font-bold text-white"
+                      >=</span
+                    >
+                    <span class="font-medium">Igual a</span>
+                  </div>
+                  <span class="text-sm text-gray-600 font-mono">5 = 5 → V</span>
+                </div>
+                <div
+                  class="flex items-center justify-between bg-white/70 rounded-lg p-4"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="w-8 h-8 bg-soft-purple rounded-full flex items-center justify-center font-bold text-white text-xs"
+                      >≠</span
+                    >
+                    <span class="font-medium">Diferente de</span>
+                  </div>
+                  <span class="text-sm text-gray-600 font-mono">5 ≠ 3 → V</span>
+                </div>
+                <div
+                  class="flex items-center justify-between bg-white/70 rounded-lg p-4"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="w-8 h-8 bg-soft-purple rounded-full flex items-center justify-center font-bold text-white"
+                      >></span
+                    >
+                    <span class="font-medium">Maior que</span>
+                  </div>
+                  <span class="text-sm text-gray-600 font-mono">8 > 5 → V</span>
+                </div>
+                <div
+                  class="flex items-center justify-between bg-white/70 rounded-lg p-4"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="w-8 h-8 bg-soft-purple rounded-full flex items-center justify-center font-bold text-white"
+                      ><</span
+                    >
+                    <span class="font-medium">Menor que</span>
+                  </div>
+                  <span class="text-sm text-gray-600 font-mono">3 < 8 → V</span>
+                </div>
+                <div
+                  class="flex items-center justify-between bg-white/70 rounded-lg p-4"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="w-8 h-8 bg-soft-purple rounded-full flex items-center justify-center font-bold text-white text-xs"
+                      >≥</span
+                    >
+                    <span class="font-medium">Maior ou igual</span>
+                  </div>
+                  <span class="text-sm text-gray-600 font-mono">7 ≥ 7 → V</span>
+                </div>
+                <div
+                  class="flex items-center justify-between bg-white/70 rounded-lg p-4"
+                >
+                  <div class="flex items-center gap-3">
+                    <span
+                      class="w-8 h-8 bg-soft-purple rounded-full flex items-center justify-center font-bold text-white text-xs"
+                      >≤</span
+                    >
+                    <span class="font-medium">Menor ou igual</span>
+                  </div>
+                  <span class="text-sm text-gray-600 font-mono">4 ≤ 6 → V</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="bg-pastel-green/70 rounded-2xl p-6">
+            <h3
+              class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+            >
+              <span class="text-2xl">🧮</span> Exemplos Práticos
+            </h3>
+            <div class="grid md:grid-cols-3 gap-4">
+              <div class="bg-white/70 rounded-lg p-4">
+                <div class="font-mono text-sm mb-2">resultado ← 10 + 5 * 2</div>
+                <div class="text-xs text-gray-600">resultado = 20</div>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4">
+                <div class="font-mono text-sm mb-2">aprovado ← nota ≥ 7</div>
+                <div class="text-xs text-gray-600">VERDADEIRO se nota ≥ 7</div>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4">
+                <div class="font-mono text-sm mb-2">resto ← 15 MOD 4</div>
+                <div class="text-xs text-gray-600">resto = 3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 12: Atividades Práticas -->
+      <div
+        class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden"
+      >
+        <div class="space-y-8">
+          <div class="text-center">
+            <div
+              class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6"
+            >
+              Slide 12 de 13
+            </div>
+            <h2
+              class="text-4xl font-bold gradient-text flex items-center justify-center gap-4"
+            >
+              🎯 Atividades Práticas
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-6">
+            <div
+              class="bg-gradient-to-br from-pastel-green to-soft-green/30 rounded-2xl p-6 border-l-4 border-soft-green hover-lift"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-2xl">📝</span>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Atividade 1: Linguagem Natural
+                </h3>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4 mb-4">
+                <p class="font-medium text-gray-800 mb-2">
+                  🥪 Desafio: Escreva um algoritmo para fazer um sanduíche
+                </p>
+                <p class="text-sm text-gray-600">
+                  💡 Dica: Pense em todos os passos, desde pegar os ingredientes
+                  até servir!
+                </p>
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="w-2 h-2 bg-soft-green rounded-full"></span>
+                <span>Tempo estimado: 10 minutos</span>
+              </div>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-pastel-blue to-soft-blue/30 rounded-2xl p-6 border-l-4 border-soft-blue hover-lift"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-2xl">📊</span>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Atividade 2: Fluxograma
+                </h3>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4 mb-4">
+                <p class="font-medium text-gray-800 mb-2">
+                  🔢 Desafio: Crie um fluxograma para verificar se um número é
+                  par ou ímpar
+                </p>
+                <p class="text-sm text-gray-600">
+                  💡 Use os símbolos: início/fim, entrada, processo, decisão e
+                  saída
+                </p>
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="w-2 h-2 bg-soft-blue rounded-full"></span>
+                <span>Tempo estimado: 15 minutos</span>
+              </div>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-pastel-purple to-soft-purple/30 rounded-2xl p-6 border-l-4 border-soft-purple hover-lift"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-2xl">💻</span>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Atividade 3: Pseudocódigo
+                </h3>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4 mb-4">
+                <p class="font-medium text-gray-800 mb-2">
+                  ⭕ Desafio: Escreva um pseudocódigo para calcular a área de um
+                  círculo
+                </p>
+                <p class="text-sm text-gray-600">
+                  💡 Fórmula: área = π × raio²
+                </p>
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="w-2 h-2 bg-soft-purple rounded-full"></span>
+                <span>Tempo estimado: 12 minutos</span>
+              </div>
+            </div>
+
+            <div
+              class="bg-gradient-to-br from-pastel-orange to-soft-orange/30 rounded-2xl p-6 border-l-4 border-soft-orange hover-lift"
+            >
+              <div class="flex items-center gap-3 mb-4">
+                <span class="text-2xl">🔄</span>
+                <h3 class="text-xl font-semibold text-gray-800">
+                  Atividade 4: Conversão
+                </h3>
+              </div>
+              <div class="bg-white/70 rounded-lg p-4 mb-4">
+                <p class="font-medium text-gray-800 mb-2">
+                  🔀 Desafio: Converta o algoritmo do sanduíche em fluxograma
+                </p>
+                <p class="text-sm text-gray-600">
+                  💡 Use a Atividade 1 como base para criar a representação
+                  gráfica
+                </p>
+              </div>
+              <div class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="w-2 h-2 bg-soft-orange rounded-full"></span>
+                <span>Tempo estimado: 20 minutos</span>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="bg-gradient-to-r from-pastel-yellow to-pastel-pink rounded-2xl p-6 text-center"
+          >
+            <h3 class="text-xl font-semibold text-gray-800 mb-3">
+              🏆 Desafio Extra
+            </h3>
+            <p class="text-gray-700 mb-4">
+              Crie um algoritmo completo (linguagem natural + fluxograma +
+              pseudocódigo) para calcular a média final de um aluno com 4 notas
+            </p>
+            <div
+              class="inline-flex items-center gap-2 bg-white/70 rounded-full px-4 py-2 text-sm font-medium text-gray-700"
+            >
+              <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              Para quem terminar as outras atividades
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 13: Resumo e Próximos Passos -->
+      <div
+        class="slide max-w-6xl w-full bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-12 slide-transition hidden"
+      >
+        <div class="space-y-8">
+          <div class="text-center">
+            <div
+              class="inline-block bg-gradient-to-r from-soft-blue to-soft-purple px-6 py-2 rounded-full text-sm font-medium text-gray-700 mb-6"
+            >
+              Slide 13 de 13
+            </div>
+            <h2
+              class="text-4xl font-bold gradient-text flex items-center justify-center gap-4"
+            >
+              📚 Resumo da Aula
+            </h2>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-8">
+            <div class="space-y-6">
+              <div class="bg-pastel-green/70 rounded-2xl p-6">
+                <h3
+                  class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+                >
+                  <span class="text-green-600">✅</span> O que aprendemos hoje
+                </h3>
+                <ul class="space-y-3 text-gray-700">
+                  <li class="flex items-start gap-3">
+                    <div class="w-2 h-2 bg-soft-green rounded-full mt-2"></div>
+                    <span>Conceito e características dos algoritmos</span>
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <div class="w-2 h-2 bg-soft-green rounded-full mt-2"></div>
+                    <span
+                      >Três formas de representação: linguagem natural,
+                      fluxograma e pseudocódigo</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <div class="w-2 h-2 bg-soft-green rounded-full mt-2"></div>
+                    <span
+                      >Estrutura básica: entrada → processamento → saída</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <div class="w-2 h-2 bg-soft-green rounded-full mt-2"></div>
+                    <span
+                      >Tipos de dados: inteiro, real, caractere, lógico</span
+                    >
+                  </li>
+                  <li class="flex items-start gap-3">
+                    <div class="w-2 h-2 bg-soft-green rounded-full mt-2"></div>
+                    <span>Operadores aritméticos e relacionais</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="bg-pastel-blue/70 rounded-2xl p-6">
+                <h3
+                  class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+                >
+                  <span class="text-2xl">💡</span> Pontos-chave para lembrar
+                </h3>
+                <div class="space-y-3 text-sm text-gray-700">
+                  <div class="bg-white/70 rounded-lg p-3">
+                    <strong>Algoritmos</strong> são sequências lógicas de passos
+                  </div>
+                  <div class="bg-white/70 rounded-lg p-3">
+                    <strong>Variáveis</strong> armazenam dados que podem mudar
+                  </div>
+                  <div class="bg-white/70 rounded-lg p-3">
+                    <strong>Tipos de dados</strong> definem que informação pode
+                    ser armazenada
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <div
+                class="bg-gradient-to-br from-pastel-purple to-pastel-pink rounded-2xl p-8 text-center"
+              >
+                <div class="text-4xl mb-4">🚀</div>
+                <h3 class="text-2xl font-semibold text-gray-800 mb-3">
+                  Próxima Aula
+                </h3>
+                <p class="text-lg text-gray-700 font-medium">
+                  Estruturas de Controle
+                </p>
+                <p class="text-gray-600 mt-2">
+                  Sequencial, Condicional e Repetição
+                </p>
+              </div>
+
+              <div class="bg-pastel-yellow/70 rounded-2xl p-6">
+                <h3
+                  class="text-xl font-semibold text-gray-800 mb-4 flex items-center gap-2"
+                >
+                  <span class="text-2xl">📖</span> Para casa
+                </h3>
+                <ul class="space-y-2 text-sm text-gray-700">
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-soft-yellow rounded-full"></span>
+                    Termine as atividades práticas
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-soft-yellow rounded-full"></span>
+                    Pense em 3 algoritmos do seu dia a dia
+                  </li>
+                  <li class="flex items-center gap-2">
+                    <span class="w-2 h-2 bg-soft-yellow rounded-full"></span>
+                    Revise os tipos de dados
+                  </li>
+                </ul>
+              </div>
+
+              <div
+                class="text-center bg-gradient-to-r from-soft-blue to-soft-purple rounded-2xl p-6 text-white"
+              >
+                <h3 class="text-xl font-semibold mb-2">❓ Dúvidas?</h3>
+                <p class="text-lg">Vamos praticar juntos! 💪</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Navigation -->
-    <div class="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4 z-40">
-        <button id="prev-btn" onclick="previousSlide()" class="bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0">
-            ← Anterior
-        </button>
-        <button id="next-btn" onclick="nextSlide()" class="bg-gradient-to-r from-soft-blue to-soft-purple hover:from-blue-500 hover:to-purple-500 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0">
-            Próximo →
-        </button>
+    <div
+      class="fixed bottom-8 left-1/2 transform -translate-x-1/2 flex gap-4 z-40"
+    >
+      <button
+        id="prev-btn"
+        onclick="previousSlide()"
+        class="bg-white/90 backdrop-blur-sm hover:bg-white text-gray-700 px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+      >
+        ← Anterior
+      </button>
+      <button
+        id="next-btn"
+        onclick="nextSlide()"
+        class="bg-gradient-to-r from-soft-blue to-soft-purple hover:from-blue-500 hover:to-purple-500 text-white px-6 py-3 rounded-full font-medium transition-all duration-300 hover:shadow-lg hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+      >
+        Próximo →
+      </button>
     </div>
-<script src="main.js"></script>
-    </body>
+
+    <script src="main.js"></script>
+  </body>
 </html>
